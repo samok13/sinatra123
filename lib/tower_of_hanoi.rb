@@ -2,6 +2,7 @@ class TowerOfHanoi
 
   NUM_DISKS = 3
 
+
   attr_accessor :towers
 
   # Allow a game state to be

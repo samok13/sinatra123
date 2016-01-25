@@ -6,4 +6,5 @@ gem 'rspec'
 gem 'guard-rspec'
 gem 'rerun'
 gem 'capybara'
+gem 'json'
 

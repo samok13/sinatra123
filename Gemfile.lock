@@ -25,6 +25,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    json (1.8.3)
     listen (3.0.5)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -82,9 +83,10 @@ PLATFORMS
 DEPENDENCIES
   capybara
   guard-rspec
+  json
   rerun
   rspec
   sinatra
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
