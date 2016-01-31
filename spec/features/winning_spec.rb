@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe 'Disks' do
 
   # Before each test

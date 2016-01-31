@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe 'Game view' do
 
   # Before each test

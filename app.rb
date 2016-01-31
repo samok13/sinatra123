@@ -1,38 +1,43 @@
 require 'sinatra'
 require_relative 'lib/tower_of_hanoi'
-require 'json'
 
 enable :sessions
 
 get '/' do
 
-@game = TowerOfHanoi.new
+  game = TowerOfHanoi.new
 
-session[:game] = @game.towers.to_json
+  session[:game] = game.towers
 
-erb :game, :locals => {:towers => @game.towers}
+  erb :game, :locals => {:towers => game.towers, :error_message => nil, :winning_message => nil}
 
 end
 
 
 post '/' do
 
-@game = TowerOfHanoi.new(JSON.parse(session[:game]))
+  game = TowerOfHanoi.new(session[:game])
 
-from = Integer(params[:from])
-to = Integer(params[:to])
+  from = Integer(params[:from])
+  to = Integer(params[:to])
 
-# @error_message = nil
+  error_message = nil
 
-if @game.valid_move?(from, to)
-  @game.move(from, to)
-# else
-  # @error_message = 'Invalid move'
-end
+  if game.valid_move?(from, to)
+    game.move(from, to)
+  else
+    error_message = 'Invalid move'
+  end
 
-session[:game] = @game.towers.to_json
+  winning_message = nil
 
-erb :game, :locals => {:towers => @game.towers}
+  if game.win?
+    winning_message = 'You win'
+  end
+
+  session[:game] = game.towers
+
+  erb :game, :locals => {:towers => game.towers, :error_message => error_message, :winning_message => winning_message}
 
 end
 
